@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PK Mart - Shop Smart • Live Better</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6B21A8;
+      --primary-dark: #581C87;
+      --accent: #FF6B00;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --navy: #0F172A;
+      --green: #10B981;
+      --radius: 14px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; }
+
+    /* Splash Screen */
+    #splash-screen {
+      position: fixed; inset: 0; background: linear-gradient(135deg, #6B21A8, #4C1D95);
+      z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; transition: opacity 0.5s ease;
+    }
+    .splash-logo { width: 90px; height: 90px; background: white; border-radius: 24px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px; }
+    .splash-logo i { font-size: 45px; color: var(--primary); }
+    .splash-title { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+    .splash-title span { color: var(--accent); }
+    .splash-tagline { font-size: 13px; opacity: 0.85; margin-top: 5px; letter-spacing: 0.5px; }
+
+    /* Header */
+    .header { background: var(--primary); color: white; padding: 14px 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .brand { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .brand span { color: var(--accent); }
+    .search-box { background: white; border-radius: 10px; display: flex; align-items: center; padding: 8px 12px; gap: 8px; }
+    .search-box input { border: none; outline: none; width: 100%; font-size: 13px; color: var(--text); }
+    .search-box i { color: var(--text-muted); }
+
+    /* Main Container Views */
+    .view { display: none; padding: 16px; }
+    .view.active { display: block; }
+
+    /* Banner */
+    .banner { background: linear-gradient(90deg, #6B21A8, #9333EA); border-radius: var(--radius); padding: 20px; color: white; position: relative; overflow: hidden; margin-bottom: 20px; }
+    .banner-tag { background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+    .banner-title { font-size: 20px; font-weight: 800; margin: 8px 0; max-width: 60%; }
+    .banner-btn { background: var(--accent); border: none; padding: 8px 18px; color: white; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; }
+
+    /* Categories */
+    .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .cat-item { background: white; padding: 12px 6px; border-radius: var(--radius); text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.04); font-size: 11px; font-weight: 600; }
+    .cat-icon { width: 44px; height: 44px; background: #F3E8FF; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; font-size: 18px; }
+
+    /* Products Grid */
+    .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .product-card { background: white; border-radius: var(--radius); padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: relative; }
+    .prod-img { width: 100%; height: 130px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
+    .prod-title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .prod-price { font-size: 14px; font-weight: 800; color: var(--text); margin-top: 4px; }
+    .prod-old-price { font-size: 11px; color: var(--text-muted); text-decoration: line-through; margin-left: 4px; }
+    .prod-discount { font-size: 11px; color: var(--green); font-weight: 700; margin-left: 4px; }
+    .add-cart-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 8px; border-radius: 8px; margin-top: 8px; font-weight: 600; font-size: 12px; cursor: pointer; }
+
+    /* Bottom Navigation */
+    .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #E2E8F0; z-index: 1000; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); text-decoration: none; font-size: 10px; font-weight: 600; gap: 3px; cursor: pointer; }
+    .nav-item.active { color: var(--primary); }
+    .nav-item i { font-size: 18px; }
+
+    /* Owner & Admin Panels */
+    .dashboard-card { background: var(--navy); color: white; border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+    .stat-box { background: rgba(255,255,255,0.08); padding: 12px; border-radius: 10px; }
+    .stat-num { font-size: 18px; font-weight: 800; margin-top: 4px; }
+
+    /* Forms */
+    .form-group { margin-bottom: 12px; }
+    .form-group label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px; }
+    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 8px; outline: none; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Splash Screen -->
+  <div id="splash-screen">
+    <div class="splash-logo"><i class="fa-solid fa-bag-shopping"></i></div>
+    <div class="splash-title">PK <span>Mart</span></div>
+    <div class="splash-tagline">Shop Smart • Live Better</div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div class="brand"><i class="fa-solid fa-bag-shopping" style="color:var(--accent)"></i> PK <span>Mart</span></div>
+      <div><i class="fa-regular fa-bell"></i></div>
+    </div>
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search for products, brands and more...">
+    </div>
+  </div>
+
+  <!-- 2. Home View -->
+  <div id="home-view" class="view active">
+    <div class="banner">
+      <span class="banner-tag">Big Saving Days</span>
+      <div class="banner-title">UP TO 70% OFF</div>
+      <button class="banner-btn">Shop Now</button>
+    </div>
+
+    <div class="section-title">Categories</div>
+    <div class="category-grid">
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-mobile-screen"></i></div>Mobiles</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-shirt"></i></div>Fashion</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-house"></i></div>Home</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>Beauty</div>
+    </div>
+
+    <div class="section-title">Best Deals for You</div>
+    <div class="products-grid" id="products-list">
+      <!-- Dynamic Products Will Load Here -->
+    </div>
+  </div>
+
+  <!-- 3. Cart View -->
+  <div id="cart-view" class="view">
+    <div class="section-title">My Cart</div>
+    <div id="cart-items">
+      <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">Aapka Cart khaali hai!</p>
+    </div>
+  </div>
+
+  <!-- 4. Login View -->
+  <div id="login-view" class="view">
+    <div class="section-title" style="text-align: center; margin-top: 20px;">Welcome Back</div>
+    <p style="text-align: center; font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Login to your account</p>
+    
+    <div class="form-group">
+      <label>Mobile Number</label>
+      <input type="text" id="login-mobile" placeholder="Enter mobile number">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Enter password">
+    </div>
+    <button class="add-cart-btn" onclick="performLogin()" style="padding: 12px; font-size: 14px; margin-top: 10px;">Login</button>
+  </div>
+
+  <!-- 5. Owner Dashboard View -->
+  <div id="owner-view" class="view">
+    <div class="dashboard-card">
+      <div style="font-size: 14px; font-weight: 700;">Owner Panel</div>
+      <div class="stat-grid">
+        <div class="stat-box"><div>Total Sales</div><div class="stat-num">₹1,24,560</div></div>
+        <div class="stat-box"><div>Total Orders</div><div class="stat-num">342</div></div>
+      </div>
+    </div>
+    
+    <div class="section-title">Admin Management</div>
+    <div style="background: white; padding: 14px; border-radius: var(--radius);">
+      <div class="form-group"><label>Admin Name</label><input type="text" id="adm-name"></div>
+      <div class="form-group"><label>Mobile</label><input type="text" id="adm-mobile"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="adm-pass"></div>
+      <button class="add-cart-btn" onclick="createAdmin()">Create Admin</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="nav-item active" onclick="switchView('home-view', this)"><i class="fa-solid fa-house"></i>Home</div>
+    <div class="nav-item" onclick="switchView('cart-view', this)"><i class="fa-solid fa-cart-shopping"></i>Cart</div>
+    <div class="nav-item" onclick="switchView('login-view', this)"><i class="fa-solid fa-user"></i>Account</div>
+  </div>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbx_YOUR_DEPLOYED_URL/exec";
+
+    // Splash Screen Handling
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        splash.style.opacity = '0';
+        setTimeout(() => splash.style.display = 'none', 500);
+      }, 2000);
+    });
+
+    // View Switching
+    function switchView(viewId, element) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+      if(element) element.classList.add('active');
+    }
+
+    // Login API Integration
+    async function performLogin() {
+      const mobile = document.getElementById('login-mobile').value;
+      const pass = document.getElementById('login-pass').value;
+
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        body: JSON.stringify({ action: 'login', mobile: mobile, password: pass })
+      });
+      const result = await response.json();
+
+      if(result.status === 'success') {
+        alert(result.message);
+        if(result.data.role === 'owner') switchView('owner-view');
+        else switchView('home-view');
+      } else {
+        alert(result.message);
+      }
+    }
+  </script>
+</body>
+</html>
