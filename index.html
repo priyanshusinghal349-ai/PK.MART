@@ -20,7 +20,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 75px; max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; }
 
     /* Splash Screen */
     #splash-screen {
@@ -52,43 +52,42 @@
     .banner-title { font-size: 20px; font-weight: 800; margin: 8px 0; max-width: 60%; }
     .banner-btn { background: var(--accent); border: none; padding: 8px 18px; color: white; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; }
 
-    /* Categories */
+    /* Categories Grid (8 Items) */
     .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
-    .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
-    .cat-item { background: white; padding: 12px 6px; border-radius: var(--radius); text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.04); font-size: 11px; font-weight: 600; }
-    .cat-icon { width: 44px; height: 44px; background: #F3E8FF; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; font-size: 18px; }
+    .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+    .cat-item { background: white; padding: 10px 4px; border-radius: var(--radius); text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.04); font-size: 11px; font-weight: 600; cursor: pointer; }
+    .cat-icon { width: 40px; height: 40px; background: #F3E8FF; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; font-size: 16px; }
 
     /* Products Grid */
     .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .product-card { background: white; border-radius: var(--radius); padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: relative; }
-    .prod-img { width: 100%; height: 130px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
-    .prod-title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .prod-img { width: 100%; height: 120px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
+    .prod-title { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .prod-price { font-size: 14px; font-weight: 800; color: var(--text); margin-top: 4px; }
     .prod-old-price { font-size: 11px; color: var(--text-muted); text-decoration: line-through; margin-left: 4px; }
     .prod-discount { font-size: 11px; color: var(--green); font-weight: 700; margin-left: 4px; }
     .add-cart-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 8px; border-radius: 8px; margin-top: 8px; font-weight: 600; font-size: 12px; cursor: pointer; }
 
-    /* Bottom Navigation */
-    .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #E2E8F0; z-index: 1000; }
-    .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); text-decoration: none; font-size: 10px; font-weight: 600; gap: 3px; cursor: pointer; }
+    /* Bottom Navigation (5 Items) */
+    .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: white; display: flex; justify-content: space-around; padding: 8px 0; border-top: 1px solid #E2E8F0; z-index: 1000; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); text-decoration: none; font-size: 10px; font-weight: 600; gap: 3px; cursor: pointer; width: 20%; }
     .nav-item.active { color: var(--primary); }
     .nav-item i { font-size: 18px; }
 
-    /* Owner & Admin Panels */
+    /* Dashboard & Forms */
     .dashboard-card { background: var(--navy); color: white; border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
     .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
     .stat-box { background: rgba(255,255,255,0.08); padding: 12px; border-radius: 10px; }
     .stat-num { font-size: 18px; font-weight: 800; margin-top: 4px; }
 
-    /* Forms */
     .form-group { margin-bottom: 12px; }
     .form-group label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px; }
-    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 8px; outline: none; font-size: 13px; }
+    .form-group input { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 8px; outline: none; font-size: 13px; }
   </style>
 </head>
 <body>
 
-  <!-- 1. Splash Screen -->
+  <!-- Splash Screen -->
   <div id="splash-screen">
     <div class="splash-logo"><i class="fa-solid fa-bag-shopping"></i></div>
     <div class="splash-title">PK <span>Mart</span></div>
@@ -107,7 +106,7 @@
     </div>
   </div>
 
-  <!-- 2. Home View -->
+  <!-- 1. Home View -->
   <div id="home-view" class="view active">
     <div class="banner">
       <span class="banner-tag">Big Saving Days</span>
@@ -121,23 +120,46 @@
       <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-shirt"></i></div>Fashion</div>
       <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-house"></i></div>Home</div>
       <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>Beauty</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-laptop"></i></div>Electronics</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-tv"></i></div>Appliances</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-gamepad"></i></div>Toys</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-border-all"></i></div>More</div>
     </div>
 
     <div class="section-title">Best Deals for You</div>
     <div class="products-grid" id="products-list">
-      <!-- Dynamic Products Will Load Here -->
+      <p style="grid-column: span 2; text-align: center; padding: 20px; color: var(--text-muted);">Products loading...</p>
+    </div>
+  </div>
+
+  <!-- 2. Categories View -->
+  <div id="categories-view" class="view">
+    <div class="section-title">All Categories</div>
+    <div class="category-grid">
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-mobile-screen"></i></div>Mobiles</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-shirt"></i></div>Fashion</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-house"></i></div>Home & Kitchen</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>Beauty</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-laptop"></i></div>Electronics</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-tv"></i></div>Appliances</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-gamepad"></i></div>Toys</div>
+      <div class="cat-item"><div class="cat-icon"><i class="fa-solid fa-ellipsis"></i></div>More</div>
     </div>
   </div>
 
   <!-- 3. Cart View -->
   <div id="cart-view" class="view">
     <div class="section-title">My Cart</div>
-    <div id="cart-items">
-      <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">Aapka Cart khaali hai!</p>
-    </div>
+    <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">Aapka Cart khaali hai!</p>
   </div>
 
-  <!-- 4. Login View -->
+  <!-- 4. Wishlist View -->
+  <div id="wishlist-view" class="view">
+    <div class="section-title">My Wishlist</div>
+    <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">Wishlist me koi item nahi hai!</p>
+  </div>
+
+  <!-- 5. Account / Login View -->
   <div id="login-view" class="view">
     <div class="section-title" style="text-align: center; margin-top: 20px;">Welcome Back</div>
     <p style="text-align: center; font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Login to your account</p>
@@ -153,7 +175,7 @@
     <button class="add-cart-btn" onclick="performLogin()" style="padding: 12px; font-size: 14px; margin-top: 10px;">Login</button>
   </div>
 
-  <!-- 5. Owner Dashboard View -->
+  <!-- Owner Dashboard View -->
   <div id="owner-view" class="view">
     <div class="dashboard-card">
       <div style="font-size: 14px; font-weight: 700;">Owner Panel</div>
@@ -172,26 +194,28 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation -->
+  <!-- Bottom Navigation (5 Main Items) -->
   <div class="bottom-nav">
     <div class="nav-item active" onclick="switchView('home-view', this)"><i class="fa-solid fa-house"></i>Home</div>
+    <div class="nav-item" onclick="switchView('categories-view', this)"><i class="fa-solid fa-border-all"></i>Categories</div>
     <div class="nav-item" onclick="switchView('cart-view', this)"><i class="fa-solid fa-cart-shopping"></i>Cart</div>
+    <div class="nav-item" onclick="switchView('wishlist-view', this)"><i class="fa-solid fa-heart"></i>Wishlist</div>
     <div class="nav-item" onclick="switchView('login-view', this)"><i class="fa-solid fa-user"></i>Account</div>
   </div>
 
   <script>
-    const API_URL = "[https://script.google.com/macros/s/AKfycbxh6L7qPKUwhFPDt-Iug86OLzohPzW4wV0F2-mmpO5Gg1dIO2U0S7OJlSj4EL7E4O7vMg/exec](https://script.google.com/macros/s/AKfycbxh6L7qPKUwhFPDt-Iug86OLzohPzW4wV0F2-mmpO5Gg1dIO2U0S7OJlSj4EL7E4O7vMg/exec)";
+    const API_URL = "https://script.google.com/macros/s/AKfycbxh6L7qPKUwhFPDt-Iug86OLzohPzW4wV0F2-mmpO5Gg1dIO2U0S7OJlSj4EL7E4O7vMg/exec";
 
-    // Splash Screen Handling
     window.addEventListener('load', () => {
       setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         splash.style.opacity = '0';
         setTimeout(() => splash.style.display = 'none', 500);
-      }, 2000);
+      }, 1500);
+
+      loadProducts();
     });
 
-    // View Switching
     function switchView(viewId, element) {
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -199,7 +223,46 @@
       if(element) element.classList.add('active');
     }
 
-    // Login API Integration
+    async function loadProducts() {
+      try {
+        const response = await fetch(API_URL + "?action=get_products");
+        const result = await response.json();
+        const container = document.getElementById('products-list');
+        
+        if (result.status === 'success' && result.data && result.data.length > 0) {
+          container.innerHTML = '';
+          result.data.forEach(prod => {
+            container.innerHTML += `
+              <div class="product-card">
+                <img src="${prod.image || 'https://via.placeholder.com/150'}" class="prod-img">
+                <div class="prod-title">${prod.title}</div>
+                <div class="prod-price">₹${prod.discountPrice || prod.price} <span class="prod-old-price">₹${prod.price}</span></div>
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            `;
+          });
+        } else {
+          // Default Sample Products for UI Display if Sheet is Empty
+          container.innerHTML = `
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" class="prod-img">
+              <div class="prod-title">Men's T-Shirt</div>
+              <div class="prod-price">₹299 <span class="prod-old-price">₹999</span> <span class="prod-discount">70% OFF</span></div>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300" class="prod-img">
+              <div class="prod-title">Smart Watch</div>
+              <div class="prod-price">₹1,499 <span class="prod-old-price">₹4,999</span> <span class="prod-discount">70% OFF</span></div>
+              <button class="add-cart-btn">Add to Cart</button>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error("Error loading products:", error);
+      }
+    }
+
     async function performLogin() {
       const mobile = document.getElementById('login-mobile').value;
       const pass = document.getElementById('login-pass').value;
